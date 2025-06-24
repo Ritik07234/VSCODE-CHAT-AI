@@ -9,9 +9,6 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:vscode-chat-ai.startChat"
-  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
