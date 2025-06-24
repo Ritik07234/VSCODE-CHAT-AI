@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["ES2020"],
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "out",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "media/chat-ui"   // 👈 Ignore React code during extension compilation
+  ]
+}
