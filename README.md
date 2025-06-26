@@ -3,32 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VS Code AI Chat Extension (DeepSeek API)</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background-color: #fff;
-    }
-    code {
-      background: #f5f5f5;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    pre {
-      background: #f5f5f5;
-      padding: 12px;
-      border-radius: 4px;
-      overflow: auto;
-    }
-    h1, h2, h3 {
-      color: #222;
-    }
-  </style>
+  
+     
 </head>
 <body>
 
