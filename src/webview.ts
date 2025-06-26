@@ -1,23 +1,25 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
+import * as fs from 'fs';
 
 export function getWebviewContent(context: vscode.ExtensionContext, webview: vscode.Webview): string {
-  const scriptUri = webview.asWebviewUri(
-    vscode.Uri.file(path.join(context.extensionPath, 'media', 'dist', 'assets', 'index.js'))
-  );
+  // Read the built index.html
+  const indexHtmlPath = path.join(context.extensionPath, 'media', 'dist', 'index.html');
+  let html = fs.readFileSync(indexHtmlPath, 'utf8');
 
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>AI Chat</title>
-    </head>
-    <body>
-      <div id="root"></div>
-      <script type="module" src="${scriptUri}"></script>
-    </body>
-    </html>
-  `;
+  // Replace asset paths with webview URIs
+  html = html.replace(/src="\.\/assets\/(.*?)"/g, (match, p1) => {
+    const assetUri = webview.asWebviewUri(vscode.Uri.file(path.join(context.extensionPath, 'media', 'dist', 'assets', p1)));
+    return `src="${assetUri}"`;
+  });
+  html = html.replace(/href="\.\/assets\/(.*?)"/g, (match, p1) => {
+    const assetUri = webview.asWebviewUri(vscode.Uri.file(path.join(context.extensionPath, 'media', 'dist', 'assets', p1)));
+    return `href="${assetUri}"`;
+  });
+  html = html.replace(/href="\.\/vite\.svg"/g, () => {
+    const assetUri = webview.asWebviewUri(vscode.Uri.file(path.join(context.extensionPath, 'media', 'dist', 'vite.svg')));
+    return `href="${assetUri}"`;
+  });
+
+  return html;
 }

@@ -10,7 +10,7 @@ type Message = {
   text: string;
 };
 
-// @ts-ignore
+// @ts-expect-error: acquireVsCodeApi is injected by VS Code webview environment
 const vscode = acquireVsCodeApi(); // Bridge to VS Code extension
 
 function App() {
@@ -54,6 +54,7 @@ function App() {
 
   return (
     <div className="chat-container">
+      <h1 style={{color: 'red', textAlign: 'center'}}>React App Loaded</h1>
       <div className="messages">
         {messages.map((msg, idx) => (
           <div

@@ -1,7 +1,7 @@
 {
   "name": "vscode-chat-ai",
   "displayName": "VSCode Chat AI",
-  "description": "AI chat with React panel and file mentions",
+  "description": "AI chat with React panel and file mentions. Uses DeepSeek API for completions. Set DEEPSEEK_API_KEY in your .env file.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.101.0"
@@ -48,5 +48,8 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "openai": "^5.7.0"
-  }
+  },
+  "activationEvents": [
+    "onCommand:vscode-chat-ai.startChat"
+  ]
 }
